@@ -1,14 +1,16 @@
 function getPlatform() {
     return {
-        draw() {
-            ctx.beginPath();
-            ctx.fillRect(this.x, this.y, this.width, this.height);
-        },
         width: 100,
         height: 10,
         x: 0,
         y: 0,
         velocity: 2,
+        color: "black",
+        draw() {
+            ctx.beginPath();
+            ctx.fillStyle = this.color,
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        },
         randomizeX() {
             this.x = getRandInt(0, canvas.width - platform.width);
         }

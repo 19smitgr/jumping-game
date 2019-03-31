@@ -15,6 +15,9 @@ function Player() {
         },
         keysDown: [],
         colliding: false,
+        color: "red",
+        colorfulStream: [],
+        maxColorfulStreamLength: 50,
         createEventListeners() {
             // so we can reference this in the event listeners
             var playerObject = this;
@@ -75,8 +78,10 @@ function Player() {
         },
         draw() { // draws a circle representing our player
             this.updatePosition();
+            this.updateColorfulStream();
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
             ctx.fill();
         },
         willCollide(platforms, x, y) {
@@ -99,6 +104,16 @@ function Player() {
             }
 
             return willCollide;
+        },
+        updateColorfulStream() {
+            if (this.colorfulStream.length == this.maxColorfulStreamLength) this.colorfulStream.splice(0, 1);
+
+            this.colorfulStream.push(getColorfulDot(this.x, this.y, platforms[0].velocity));
+            console.log(this.colorfulStream)
+
+            for (var i = 0; i < this.colorfulStream.length; i++) {
+                this.colorfulStream[i].draw();
+            }
         }
     }
 }
