@@ -6,7 +6,7 @@ function Player() {
         vx: 5,
         vy: 0,
         gravity: 1,
-        jumpVelocity: 20,
+        jumpVelocity: 30,
         jumping: false,
         keyBinds: { // keyCodes of the arrow keys
             left: 37,
