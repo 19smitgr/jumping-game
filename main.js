@@ -18,7 +18,7 @@ function getPlatform() {
 }
 
 var platforms = [];
-var numPlatforms = 2;
+var numPlatforms = 4;
 var numRows = 4;
 var heightBetweenRows = 200;
 
